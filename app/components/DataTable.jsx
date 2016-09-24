@@ -3,35 +3,35 @@ var FixedDataTable = require('fixed-data-table');
 var adObject = require('adObject');
 const {Table, Column, Cell} = FixedDataTable;
 
-const adObjectData = {
-    "ads": [
-        {
-            "id": 1,
-            "remote_id": "123",
-            "name": "123",
-            "status": "ACTIVE",
-        },
-        {
-            "id": 2,
-            "remote_id": "456",
-            "name": "456",
-            "status": "ACTIVE",
-
-        },
-        {
-            "id": 3,
-            "remote_id": "789",
-            "name": "789",
-            "status": "ACTIVE",
-        },
-        {
-            "id": 4,
-            "remote_id": "901",
-            "name": "901",
-            "status": "ACTIVE",
-        },
-    ]
-};
+// const adObjectData = {
+//     "ads": [
+//         {
+//             "id": 1,
+//             "remote_id": "123",
+//             "name": "123",
+//             "status": "ACTIVE",
+//         },
+//         {
+//             "id": 2,
+//             "remote_id": "456",
+//             "name": "456",
+//             "status": "ACTIVE",
+//
+//         },
+//         {
+//             "id": 3,
+//             "remote_id": "789",
+//             "name": "789",
+//             "status": "ACTIVE",
+//         },
+//         {
+//             "id": 4,
+//             "remote_id": "901",
+//             "name": "901",
+//             "status": "ACTIVE",
+//         },
+//     ]
+// };
 
 
 class DataTable extends React.Component {
@@ -50,72 +50,28 @@ class DataTable extends React.Component {
         };
     }
 
-    getColNames(adData){
-        console.log(adData)
-        var names = []
-        for (var i = 0 ; i < adData.ads.length ; i++) {
-            names.push(adData.ads[i].name)
-        };
-        console.log("get colNames: " + names)
-        return names
-    }
-
-    // showColNames(e){
-    //     e.preventDefault();
-    //     console.log('Printed');
-    //
-    //     var that = this;
-    //
-    //     getColNames(data).then(function(names) {
-    //         that.setState({
-    //             myTableData: names
-    //         });
-    //         console.log('table data: ' + this.state.myTableData)
-    //     }, function() {
-    //         that.setState({
-    //             errorMessage: "Errrrrrror"
-    //         });
-    //         console.log('table data again: ' + this.state.errorMessage)
-    //     })
-    //     console.log('table data again: ' + this.state.myTableData)
+    // getColNames(adData){
+    //     console.log(adData)
+    //     var names = []
+    //     for (var i = 0 ; i < adData.ads.length ; i++) {
+    //         names.push(adData.ads[i].name)
+    //     };
+    //     console.log("get colNames: " + names)
+    //     return names
     // }
 
-    // showColNames(adObjectData) {
-    //     console.log('Show Col Names from DT component')
-    //     // console.log(adObjects.getColNames())
-    //     // this.setState({
-    //     //     myTableData: adObjects.getColNames(adObjectData)
-    //     // })
-    // }
 
     render() {
         // console.log(adObjectData);
         var that = this;
-        var colName = this.getColNames(adObjectData)
-        // var listColName = function(){
-        //     for (var i = 0 ; i < colName.length ; i++) {
-        //         return (
-        //             <Column
-        //                 header={<Cell>{colName[i]}</Cell>}
-        //                 cell={props => (
-        //                     <Cell {...props}>
-        //                         {this.state.myTableData[props.rowIndex].name}
-        //                     </Cell>
-        //                 )}
-        //                 width={200}
-        //             />
-        //         )
-        //     };
-        // }
-
-
-
-
+        // var colName = this.getColNames(adObjectData)
+        var colName = adObject.getColNames()
+        console.log('colName: ' + colName)
 
         return (
             <div>
                 <button className="button">Fill Chart</button>
-                <p>{this.getColNames(adObjectData)[0]}</p>
+
                 <Table
                     rowsCount={this.state.myTableData.length}
                     rowHeight={50}
