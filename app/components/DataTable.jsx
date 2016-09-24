@@ -16,6 +16,7 @@ const adObjectData = {
             "remote_id": "456",
             "name": "456",
             "status": "ACTIVE",
+
         },
         {
             "id": 3,
@@ -89,10 +90,31 @@ class DataTable extends React.Component {
 
     render() {
         // console.log(adObjectData);
+        var that = this;
         var colName = this.getColNames(adObjectData)
+        // var listColName = function(){
+        //     for (var i = 0 ; i < colName.length ; i++) {
+        //         return (
+        //             <Column
+        //                 header={<Cell>{colName[i]}</Cell>}
+        //                 cell={props => (
+        //                     <Cell {...props}>
+        //                         {this.state.myTableData[props.rowIndex].name}
+        //                     </Cell>
+        //                 )}
+        //                 width={200}
+        //             />
+        //         )
+        //     };
+        // }
+
+
+
+
+
         return (
             <div>
-                <button className="button" onLoad={this.getColNames(adObjectData)}>Fill Chart</button>
+                <button className="button">Fill Chart</button>
                 <p>{this.getColNames(adObjectData)[0]}</p>
                 <Table
                     rowsCount={this.state.myTableData.length}
@@ -100,15 +122,20 @@ class DataTable extends React.Component {
                     headerHeight={50}
                     width={500}
                     height={500}>
-                    <Column
-                        header={<Cell>{colName[0]}</Cell>}
-                        cell={props => (
-                            <Cell {...props}>
-                                {this.state.myTableData[props.rowIndex].name}
-                            </Cell>
-                        )}
-                        width={200}
-                    />
+                    {colName.map(function(name, i){
+                            return (
+                                <Column
+                                    header={<Cell>{name}</Cell>}
+                                    cell={props => (
+                                        <Cell {...props}>
+                                            {that.state.myTableData[props.rowIndex].name}
+                                        </Cell>
+                                    )}
+                                    width={200}
+                                />
+                            )
+                        }
+                    )}
                 </Table>
             </div>
         );
