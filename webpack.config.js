@@ -23,9 +23,11 @@ module.exports = {
         root: __dirname,
         alias: {
             Main: 'app/components/Main.jsx',
+            DataTable: 'app/components/DataTable.jsx',
+            adObject: 'app/api/adObject.jsx',
             applicationStyles: 'app/styles/app.scss'
         },
-        extensions: ['', '.js', '.jsx']we
+        extensions: ['', '.js', '.jsx']
     },
     module: {
         loaders: [
